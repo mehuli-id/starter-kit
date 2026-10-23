@@ -98,7 +98,10 @@ hanya ke repo `mehuli-id/filament-shadcn`.
 
 ```bash
 gh secret set FILAMENT_SHADCN_TOKEN --repo mehuli-id/nama-proyek
+gh secret set FILAMENT_SHADCN_TOKEN --app dependabot --repo mehuli-id/nama-proyek   # untuk Dependabot
 ```
+
+**Dependabot** (`.github/dependabot.yml`) membuka PR pembaruan setiap Senin (Composer, npm) dan sebulan sekali (GitHub Actions); CI menguji tiap PR. Dependabot memakai penyimpanan secret sendiri, karena itu token diisi dua kali.
 
 ## Memperbarui tema
 
