@@ -3,7 +3,7 @@
 Titik awal proyek baru PT. Mehuli Data Media:
 
 - **Laravel 13**, **Filament 5**, Livewire 4, Tailwind v4
-- Tema **shadcn/ui** dari package privat [`mehuli/filament-shadcn`](https://github.com/mehuli-id/filament-shadcn) (`^1.1.3`): sidebar + header ala mockup, login "Selamat datang kembali", notifikasi database
+- Tema **shadcn/ui** dari package privat [`mehuli/filament-shadcn`](https://github.com/mehuli-id/filament-shadcn) (`^1.1.4`): sidebar + header ala mockup, login "Selamat datang kembali", notifikasi database
 - Bahasa Indonesia (`id`) dan zona waktu `Asia/Jakarta` sebagai bawaan
 - Akun admin awal dari `.env` (`ADMIN_*`) lewat seeder
 - Akses panel hanya untuk pengguna dengan `is_admin = true`
