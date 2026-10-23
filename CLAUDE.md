@@ -8,7 +8,7 @@ Starter kit (template repository) PT. Mehuli Data Media.
 
 ## Stack
 - Laravel 13, Filament 5, Livewire 4, Tailwind v4, PHPUnit.
-- Tema: package privat `mehuli/filament-shadcn` (`^1.1.6`) dari repo `vcs` `mehuli-id/filament-shadcn`. Butuh token GitHub di composer.
+- Tema: package privat `mehuli/filament-shadcn` (`^1.1.7`) dari repo `vcs` `mehuli-id/filament-shadcn`. Butuh token GitHub di composer.
 
 ## Struktur penting
 - `config/admin.php` — `ADMIN_PANEL_PATH`, `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`.
