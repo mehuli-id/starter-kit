@@ -35,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
             )
             ->login(\Mehuli\FilamentShadcn\Pages\Auth\Login::class)
             ->passwordReset()
-            ->profile()
+            ->profile(isSimple: false)
             ->databaseNotifications()
             ->darkMode(true)
             ->sidebarCollapsibleOnDesktop()
