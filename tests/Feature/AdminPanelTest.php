@@ -18,7 +18,18 @@ class AdminPanelTest extends TestCase
 
     public function test_halaman_login_bisa_dibuka(): void
     {
-        $this->get(route('filament.admin.auth.login'))->assertOk();
+        $this->get(route('filament.admin.auth.login'))
+            ->assertOk()
+            ->assertSee(__('filament-shadcn::filament-shadcn.auth.login.heading'));
+    }
+
+    public function test_dasbor_memakai_header_shadcn(): void
+    {
+        $this->actingAs(User::factory()->admin()->create())
+            ->get(route('filament.admin.pages.dashboard'))
+            ->assertOk()
+            ->assertSee('sc-header', escape: false)
+            ->assertSee('sc-brand', escape: false);
     }
 
     public function test_admin_bisa_membuka_dasbor(): void

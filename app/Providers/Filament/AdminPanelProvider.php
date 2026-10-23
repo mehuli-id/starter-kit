@@ -33,9 +33,10 @@ class AdminPanelProvider extends PanelProvider
                 ShadcnPlugin::make()
                     ->canCustomizeAppearance(fn (): bool => (bool) auth()->user()?->is_admin),
             )
-            ->login()
+            ->login(\Mehuli\FilamentShadcn\Pages\Auth\Login::class)
             ->passwordReset()
             ->profile()
+            ->databaseNotifications()
             ->darkMode(true)
             ->sidebarCollapsibleOnDesktop()
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
