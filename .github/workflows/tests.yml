@@ -1,0 +1,51 @@
+name: Tes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Tes & audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: sqlite3, pdo_sqlite, intl
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Package tema privat mehuli/filament-shadcn: butuh token baca (secret FILAMENT_SHADCN_TOKEN).
+      - name: Akses package privat
+        env:
+          TOKEN: ${{ secrets.FILAMENT_SHADCN_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Secret FILAMENT_SHADCN_TOKEN belum diisi (token baca untuk mehuli-id/filament-shadcn). Lihat README → CI."
+            exit 1
+          fi
+          composer config --global github-oauth.github.com "$TOKEN"
+
+      - run: composer install --prefer-dist --no-interaction --no-progress
+      - name: Siapkan .env
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+      - name: Tes
+        run: php artisan test
+      - name: Audit dependensi
+        run: |
+          composer audit
+          npm ci --ignore-scripts
+          npm audit --audit-level=high
+      - name: Build aset
+        run: npm run build

@@ -89,6 +89,17 @@ composer test
 
 Tes mencakup akses panel (tamu, admin, non-admin), halaman Tampilan, proteksi `is_admin`, dan `AdminSeeder`.
 
+## CI (GitHub Actions)
+
+`.github/workflows/tests.yml` menjalankan tes, `composer audit`, `npm audit`, dan build aset di setiap push.
+Karena package tema privat, isi secret **`FILAMENT_SHADCN_TOKEN`** di repo proyek
+(Settings → Secrets and variables → Actions): token *fine-grained* GitHub dengan akses **Contents: Read-only**
+hanya ke repo `mehuli-id/filament-shadcn`.
+
+```bash
+gh secret set FILAMENT_SHADCN_TOKEN --repo mehuli-id/nama-proyek
+```
+
 ## Memperbarui tema
 
 ```bash
