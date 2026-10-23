@@ -8,13 +8,13 @@ Starter kit (template repository) PT. Mehuli Data Media.
 
 ## Stack
 - Laravel 13, Filament 5, Livewire 4, Tailwind v4, PHPUnit.
-- Tema: package privat `mehuli/filament-shadcn` (`^1.1.2`) dari repo `vcs` `mehuli-id/filament-shadcn`. Butuh token GitHub di composer.
+- Tema: package privat `mehuli/filament-shadcn` (`^1.1.3`) dari repo `vcs` `mehuli-id/filament-shadcn`. Butuh token GitHub di composer.
 
 ## Struktur penting
 - `config/admin.php` — `ADMIN_PANEL_PATH`, `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`.
 - `database/seeders/AdminSeeder.php` — buat/perbarui admin dari config; idempoten; tidak menimpa sandi kecuali `ADMIN_PASSWORD` diisi.
 - `app/Models/User.php` — `FilamentUser`, `canAccessPanel()` = `is_admin`; `is_admin` tidak fillable.
-- `app/Providers/Filament/AdminPanelProvider.php` — panel `admin`, `ShadcnPlugin` dengan `canCustomizeAppearance(is_admin)`, login `Mehuli\FilamentShadcn\Pages\Auth\Login`, `databaseNotifications()` (tabel `notifications`).
+- `app/Providers/Filament/AdminPanelProvider.php` — panel `admin`, `ShadcnPlugin` dengan `canCustomizeAppearance(is_admin)`, login `Mehuli\FilamentShadcn\Pages\Auth\Login`, profil `Pages\Auth\EditProfile` (di dalam panel), `databaseNotifications()` (tabel `notifications`).
 - `config/app.php` — bawaan `id`, `id_ID`, `Asia/Jakarta` (bisa diubah lewat `.env`).
 - `tests/TestCase.php` memanggil `withoutVite()`.
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7221fab7f7c97b9cddf5540eacfb2ef",
+    "content-hash": "42292d5211e15fecf0e8e4a05e1e0f27",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3474,16 +3474,16 @@
         },
         {
             "name": "mehuli/filament-shadcn",
-            "version": "v1.1.2",
+            "version": "v1.1.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:mehuli-id/filament-shadcn.git",
-                "reference": "c0d91f05253a5e593983dcb0cb49845a42b9f8cf"
+                "reference": "62ea0b6ccd6e4057482a04a59669ebdb5b828d87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mehuli-id/filament-shadcn/zipball/c0d91f05253a5e593983dcb0cb49845a42b9f8cf",
-                "reference": "c0d91f05253a5e593983dcb0cb49845a42b9f8cf",
+                "url": "https://api.github.com/repos/mehuli-id/filament-shadcn/zipball/62ea0b6ccd6e4057482a04a59669ebdb5b828d87",
+                "reference": "62ea0b6ccd6e4057482a04a59669ebdb5b828d87",
                 "shasum": ""
             },
             "require": {
@@ -3515,10 +3515,10 @@
                 "shadcn"
             ],
             "support": {
-                "source": "https://github.com/mehuli-id/filament-shadcn/tree/v1.1.2",
+                "source": "https://github.com/mehuli-id/filament-shadcn/tree/v1.1.3",
                 "issues": "https://github.com/mehuli-id/filament-shadcn/issues"
             },
-            "time": "2026-10-23T16:38:00+00:00"
+            "time": "2026-10-23T17:10:00+00:00"
         },
         {
             "name": "monolog/monolog",
