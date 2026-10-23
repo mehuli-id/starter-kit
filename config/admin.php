@@ -19,7 +19,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | Tanpa ADMIN_EMAIL, seeder dilewati. Tanpa ADMIN_PASSWORD, seeder membuat
-    | kata sandi acak dan menampilkannya sekali di terminal.
+    | kata sandi acak dan menampilkannya sekali di terminal. Kata sandi hanya dipakai
+    | saat akun dibuat; kosongkan ADMIN_PASSWORD di .env setelah seeding pertama.
     |
     */
 
@@ -28,5 +29,8 @@ return [
     'email' => env('ADMIN_EMAIL'),
 
     'password' => env('ADMIN_PASSWORD'),
+
+    // true = timpa kata sandi akun admin yang sudah ada saat seeding (sekali pakai, lalu kembalikan ke false).
+    'reset_password' => (bool) env('ADMIN_RESET_PASSWORD', false),
 
 ];

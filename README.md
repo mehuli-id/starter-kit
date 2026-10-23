@@ -62,6 +62,25 @@ Seeder aman dijalankan ulang (`php artisan db:seed --class=AdminSeeder`): akun d
 
 Ubah aturan ini sesuai kebutuhan proyek (mis. pakai role/permission).
 
+## Keamanan
+
+Sudah terpasang:
+
+- Header keamanan di setiap respons (`app/Http/Middleware/SecurityHeaders.php`, `config/security.php`): `X-Frame-Options: SAMEORIGIN` (anti-clickjacking), `nosniff`, `Referrer-Policy`, `Permissions-Policy`, HSTS bila HTTPS, tanpa `X-Powered-By`.
+- Kata sandi minimal 12 karakter berisi huruf & angka (`PASSWORD_MIN_LENGTH`; `PASSWORD_UNCOMPROMISED=true` untuk cek kebocoran).
+- Cookie sesi `Secure` otomatis di production, `HttpOnly`, `SameSite=Lax`; CSRF aktif di panel; percobaan login dibatasi Filament.
+- Akses panel hanya `is_admin` (tidak fillable); halaman Tampilan hanya admin; Showcase mati (`SHADCN_SHOWCASE=false`).
+- `AdminSeeder` tidak menimpa kata sandi akun yang sudah ada (kecuali `ADMIN_RESET_PASSWORD=true`).
+
+### Daftar periksa production
+
+1. `APP_ENV=production`, `APP_DEBUG=false`, `LOG_LEVEL=warning`, `APP_KEY` dibuat dengan `php artisan key:generate`.
+2. Situs hanya lewat **HTTPS**; `APP_URL` pakai `https://`.
+3. Di balik load balancer/proxy: atur trusted proxies (`$middleware->trustProxies(at: …)` di `bootstrap/app.php`) supaya IP pengguna & batas percobaan login benar.
+4. Setelah seeding pertama, **kosongkan `ADMIN_PASSWORD`** di `.env` dan ganti kata sandi lewat halaman Profil.
+5. Jangan aktifkan `SHADCN_SHOWCASE` di production.
+6. `composer audit` & `npm audit` sebelum rilis.
+
 ## Tes
 
 ```bash

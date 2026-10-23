@@ -26,12 +26,14 @@ class AdminSeeder extends Seeder
         $password = config('admin.password');
         $generated = null;
 
-        // Kata sandi hanya diisi untuk akun baru atau bila ADMIN_PASSWORD diisi,
-        // supaya seeding ulang tidak menimpa kata sandi yang sudah diganti.
-        if (filled($password)) {
-            $user->password = $password;
-        } elseif (! $user->exists) {
-            $user->password = $generated = Str::password(16);
+        // Kata sandi hanya diisi untuk akun baru. Akun yang sudah ada tidak disentuh, kecuali
+        // ADMIN_RESET_PASSWORD=true — supaya `db:seed` di deploy tidak mengembalikan sandi lama.
+        if (! $user->exists || config('admin.reset_password')) {
+            if (filled($password)) {
+                $user->password = $password;
+            } else {
+                $user->password = $generated = Str::password(16);
+            }
         }
 
         $user->forceFill([

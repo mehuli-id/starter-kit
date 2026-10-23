@@ -58,4 +58,24 @@ class AdminSeederTest extends TestCase
         $this->assertTrue($admin->is_admin);
         $this->assertDatabaseCount('users', 1);
     }
+
+    public function test_admin_password_tidak_menimpa_akun_yang_sudah_ada(): void
+    {
+        config(['admin.email' => 'admin@mehuli.test', 'admin.password' => 'sandi-lama-dari-env']);
+        User::factory()->admin()->create(['email' => 'admin@mehuli.test', 'password' => 'sandi-baru-pilihan-admin']);
+
+        $this->seed(AdminSeeder::class);
+
+        $this->assertTrue(Hash::check('sandi-baru-pilihan-admin', User::firstWhere('email', 'admin@mehuli.test')->password));
+    }
+
+    public function test_reset_password_hanya_bila_diminta(): void
+    {
+        config(['admin.email' => 'admin@mehuli.test', 'admin.password' => 'sandi-reset-123', 'admin.reset_password' => true]);
+        User::factory()->admin()->create(['email' => 'admin@mehuli.test', 'password' => 'sandi-lupa']);
+
+        $this->seed(AdminSeeder::class);
+
+        $this->assertTrue(Hash::check('sandi-reset-123', User::firstWhere('email', 'admin@mehuli.test')->password));
+    }
 }
