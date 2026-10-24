@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04adc98593aa00c2d9dd65a63566d58d",
+    "content-hash": "4e5719d8142b80b85dd77992a8793818",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3474,21 +3474,25 @@
         },
         {
             "name": "mehuli/filament-shadcn",
-            "version": "v1.1.7",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
-                "url": "git@github.com:mehuli-id/filament-shadcn.git",
-                "reference": "3801d484b24516a90def982351d61845c65a9e1f"
+                "url": "https://github.com/mehuli-id/filament-shadcn.git",
+                "reference": "1ddfb00a11be5bc8bea3a79c7950df0568f1338b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mehuli-id/filament-shadcn/zipball/3801d484b24516a90def982351d61845c65a9e1f",
-                "reference": "3801d484b24516a90def982351d61845c65a9e1f",
+                "url": "https://api.github.com/repos/mehuli-id/filament-shadcn/zipball/1ddfb00a11be5bc8bea3a79c7950df0568f1338b",
+                "reference": "1ddfb00a11be5bc8bea3a79c7950df0568f1338b",
                 "shasum": ""
             },
             "require": {
                 "filament/filament": "^4.0|^5.0",
                 "php": "^8.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^10.0|^11.0",
+                "phpunit/phpunit": "^11.5|^12.0"
             },
             "type": "library",
             "extra": {
@@ -3503,8 +3507,18 @@
                     "Mehuli\\FilamentShadcn\\": "src/"
                 }
             },
+            "autoload-dev": {
+                "psr-4": {
+                    "Mehuli\\FilamentShadcn\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "Tema Filament bergaya shadcn/ui: token warna yang bisa dikustomisasi, gaya Vega/Nova/Maia/Lyra/Mira, halaman Tampilan, dan showcase semua komponen.",
             "keywords": [
@@ -3515,10 +3529,10 @@
                 "shadcn"
             ],
             "support": {
-                "source": "https://github.com/mehuli-id/filament-shadcn/tree/v1.1.7",
+                "source": "https://github.com/mehuli-id/filament-shadcn/tree/v1.1.8",
                 "issues": "https://github.com/mehuli-id/filament-shadcn/issues"
             },
-            "time": "2026-10-23T17:59:32+00:00"
+            "time": "2026-10-24T08:45:36+00:00"
         },
         {
             "name": "monolog/monolog",

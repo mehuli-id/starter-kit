@@ -3,7 +3,7 @@
 Titik awal proyek baru PT. Mehuli Data Media:
 
 - **Laravel 13**, **Filament 5**, Livewire 4, Tailwind v4
-- Tema **shadcn/ui** dari package privat [`mehuli/filament-shadcn`](https://github.com/mehuli-id/filament-shadcn) (`^1.1.7`): sidebar + header ala mockup, login "Selamat datang kembali", notifikasi database
+- Tema **shadcn/ui** dari package [`mehuli/filament-shadcn`](https://github.com/mehuli-id/filament-shadcn) (`^1.1.8`, MIT): sidebar + header ala mockup, login "Selamat datang kembali", notifikasi database
 - Bahasa Indonesia (`id`) dan zona waktu `Asia/Jakarta` sebagai bawaan
 - Akun admin awal dari `.env` (`ADMIN_*`) lewat seeder
 - Akses panel hanya untuk pengguna dengan `is_admin = true`
@@ -14,14 +14,8 @@ Titik awal proyek baru PT. Mehuli Data Media:
 Repo ini adalah *template repository*:
 
 ```bash
-gh repo create mehuli-id/nama-proyek --private --template mehuli-id/starter-kit --clone
+gh repo create <akun>/nama-proyek --private --template mehuli-id/starter-kit --clone
 cd nama-proyek
-```
-
-### Sekali per komputer/CI: akses ke package privat
-
-```bash
-composer config --global github-oauth.github.com <TOKEN>   # token dengan akses baca repo mehuli-id
 ```
 
 ### Pasang
@@ -92,16 +86,9 @@ Tes mencakup akses panel (tamu, admin, non-admin), halaman Tampilan, proteksi `i
 ## CI (GitHub Actions)
 
 `.github/workflows/tests.yml` menjalankan tes, `composer audit`, `npm audit`, dan build aset di setiap push.
-Karena package tema privat, isi secret **`FILAMENT_SHADCN_TOKEN`** di repo proyek
-(Settings → Secrets and variables → Actions): token *fine-grained* GitHub dengan akses **Contents: Read-only**
-hanya ke repo `mehuli-id/filament-shadcn`.
+Tidak perlu secret apa pun: package tema publik.
 
-```bash
-gh secret set FILAMENT_SHADCN_TOKEN --repo mehuli-id/nama-proyek
-gh secret set FILAMENT_SHADCN_TOKEN --app dependabot --repo mehuli-id/nama-proyek   # untuk Dependabot
-```
-
-**Dependabot** (`.github/dependabot.yml`) membuka PR pembaruan setiap Senin (Composer, npm) dan sebulan sekali (GitHub Actions); CI menguji tiap PR. Dependabot memakai penyimpanan secret sendiri, karena itu token diisi dua kali.
+**Dependabot** (`.github/dependabot.yml`) membuka PR pembaruan setiap Senin (Composer, npm) dan sebulan sekali (GitHub Actions); CI menguji tiap PR.
 
 ## Memperbarui tema
 
@@ -109,3 +96,7 @@ gh secret set FILAMENT_SHADCN_TOKEN --app dependabot --repo mehuli-id/nama-proye
 composer update mehuli/filament-shadcn
 npm run build
 ```
+
+## Lisensi
+
+MIT — lihat [LICENSE](LICENSE). © 2026 PT. Mehuli Data Media.

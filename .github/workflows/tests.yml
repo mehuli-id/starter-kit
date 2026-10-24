@@ -24,17 +24,6 @@ jobs:
         with:
           node-version: '22'
 
-      # Package tema privat mehuli/filament-shadcn: butuh token baca (secret FILAMENT_SHADCN_TOKEN).
-      - name: Akses package privat
-        env:
-          TOKEN: ${{ secrets.FILAMENT_SHADCN_TOKEN }}
-        run: |
-          if [ -z "$TOKEN" ]; then
-            echo "::error::Secret FILAMENT_SHADCN_TOKEN belum diisi (token baca untuk mehuli-id/filament-shadcn). Lihat README → CI."
-            exit 1
-          fi
-          composer config --global github-oauth.github.com "$TOKEN"
-
       - run: composer install --prefer-dist --no-interaction --no-progress
       - name: Siapkan .env
         run: |

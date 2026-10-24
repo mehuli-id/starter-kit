@@ -1,18 +1,9 @@
 # Pembaruan dependensi otomatis. CI (.github/workflows/tests.yml) menguji setiap PR.
-# Package tema privat: butuh Dependabot secret FILAMENT_SHADCN_TOKEN (terpisah dari secret Actions):
-#   gh secret set FILAMENT_SHADCN_TOKEN --app dependabot --repo mehuli-id/<repo>
 version: 2
-registries:
-  github-filament-shadcn:
-    type: git
-    url: https://github.com
-    username: x-access-token
-    password: ${{ secrets.FILAMENT_SHADCN_TOKEN }}
 
 updates:
   - package-ecosystem: composer
     directory: /
-    registries: [github-filament-shadcn]
     schedule:
       interval: weekly
       day: monday
