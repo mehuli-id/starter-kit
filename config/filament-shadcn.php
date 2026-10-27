@@ -69,6 +69,7 @@ return [
     'font' => [
         'sans' => env('SHADCN_FONT'),
         'mono' => env('SHADCN_FONT_MONO'),
+        'heading' => env('SHADCN_FONT_HEADING'), // font judul (v1.2.0); null = sama dengan sans
         'provider' => null,
     ],
 
